@@ -6,24 +6,11 @@
 >
 
   <!--  interpolation : on fait appel à une fonction pour afficher le statut d'un appareil, et non pas à la valeur d'une var-->
-  <!--  <h2>Posts</h2>-->
-
   <h4>{{postTitle}} </h4>
   <p class="text-right" type="Date"> {{postDate}}</p>
   <p type="text">{{postContent}}</p>
 
-
-  <!--  <p class="form-control" type="Date">{{postDate}}</p>-->
-  <!--  <p class="form-control" type="text">{{postContent}}</p>-->
-  <!--  <p class="form-control" type="number">{{postLoveIts}}</p>-->
-
-
-  <!--  [(ngModel)] est du two way binding. Il sert surtout dans les formulaires. Il permet d'utiliser le "property binding" et "l'event binding"-->
-  <!--  <input [(ngModel)]="userName"
-           class="form-control"
-           type="text">-->
-
-  <!--  Appel de methode par objet du tableau de composant récupéré de l'API-->
+  <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API-->
   <button (click)="onLove()"
           class="btn btn-success">Love !!!
   </button>

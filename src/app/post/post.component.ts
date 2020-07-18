@@ -8,6 +8,7 @@ import {PostService} from '../../services/post.service';
 })
 export class PostComponent implements OnInit {
 
+  // L'array des posts est passé de AppComponent à PostComponent via la databinding grace aux "@Input()"
   @Input() postTitle: string;
   @Input() postContent: string;
   @Input() postLoveIts: number;
