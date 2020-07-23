@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from '../services/post.service';
+import {Subscription} from 'rxjs';
+import {PostComponent} from './post/post.component';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,9 @@ import {PostService} from '../services/post.service';
 export class AppComponent implements OnInit {
 
   title = 'angularBlog';
+  // Couche d'abstractiondes données
+  posts: PostComponent[];
+  postSubscription: Subscription;
 
   post: {
     title: string,
@@ -17,7 +22,6 @@ export class AppComponent implements OnInit {
     created_at: Date
   };
 
-  posts: any[];
 
   /**
    * Declare le service
@@ -28,9 +32,15 @@ export class AppComponent implements OnInit {
 
   /**
    * Initialise le service
+   * Dès la creation de l'objet PostComponent, il va se souscrire au Subject du service et il le fera emettre.
    */
   ngOnInit(): void {
-    this.posts = this.postService.posts;
+    // creer la subscritpion
+    this.postSubscription = this.postService.postSubject.subscribe((posts: PostComponent[]) => {
+      this.posts = posts;
+    });
+    // emettre le subject
+    this.postService.emitPostSubject();
   }
 
 }
