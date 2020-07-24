@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PostService} from '../services/post.service';
-import {Subscription} from 'rxjs';
-import {PostComponent} from './post/post.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,36 +9,35 @@ import {PostComponent} from './post/post.component';
 export class AppComponent implements OnInit {
 
   title = 'angularBlog';
-  // Couche d'abstractiondes données
-  posts: PostComponent[];
-  postSubscription: Subscription;
 
-  post: {
-    title: string,
-    content: string,
-    loveIts: number,
-    created_at: Date
-  };
+  /*
+    // Couche d'abstractiondes données
+    posts: any[];
+    postSubscription: Subscription;
+
+    post: {
+      title: string,
+      content: string,
+      loveIts: number,
+      created_at: Date
+    };
+  */
 
 
   /**
-   * Declare le service
-   * @param postService
+   * Injection de dependances
+   * @param Router
    */
-  constructor(private postService: PostService) {
+  constructor(private router: Router) {
   }
 
-  /**
-   * Initialise le service
-   * Dès la creation de l'objet PostComponent, il va se souscrire au Subject du service et il le fera emettre.
-   */
   ngOnInit(): void {
-    // creer la subscritpion
-    this.postSubscription = this.postService.postSubject.subscribe((posts: PostComponent[]) => {
-      this.posts = posts;
-    });
-    // emettre le subject
-    this.postService.emitPostSubject();
   }
 
+  /**
+   * Redirige l'utilisateur vers la page de creation d'un post
+   */
+  goToNew() {
+    this.router.navigate(['/new']);
+  }
 }

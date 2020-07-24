@@ -1,18 +1,13 @@
 <div class="container">
   <div class="row">
+
     <div class="col-xs-12">
-      <h2>Posts</h2>
-      <ul class="list-group">
-        <!--        Property binding : modifications dynamique des elements du DOM-->
-        <app-post *ngFor="let post of posts; let i = index"
-                  [indexOfPst]="i"
-                  [postContent]="post.content"
-                  [postDate]="post.created_at | date: 'EEEE dd MMMM yyyy' | uppercase"
-                  [postLoveIts]="post.loveIts"
-                  [postTitle]="post.title"></app-post>
-      </ul>
+      <router-outlet></router-outlet>
     </div>
   </div>
+  <button (click)="goToNew()"
+          class="btn btn-success">Ajouter un post
+  </button>
 </div>
 
 
