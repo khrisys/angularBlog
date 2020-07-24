@@ -1,0 +1,17 @@
+<div class="col-xs-12">
+  <h2>Posts</h2>
+  <ul class="list-group">
+    <app-post-frame-in *ngFor="let post of posts; let i = index"
+                       [indexOfPst]="i"
+                       [postContent]="post.content"
+                       [postDate]="post.created_at | date: 'EEEE dd MMMM yyyy' | uppercase"
+                       [postId]="post.id"
+                       [postLoveIts]="post.loveIts"
+                       [postTitle]="post.title"></app-post-frame-in>
+
+  </ul>
+
+</div>
+
+
+

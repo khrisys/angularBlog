@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <!---Lors du submit, la methode passera en param l'ensemble du formulaire nommé form_edit_user. ngForm est une directive --->
+    <form #form_edit_post="ngForm"
+          (ngSubmit)="onSubmit(form_edit_post)">
+      <div class="form-group">
+        <label for="title">
+          Titre
+        </label>
+        <!--- required : attribut Angular stipulant que ce champ doit etre rempli --->
+        <input class="form-control"
+               id="title"
+               name="title"
+               ngModel
+               required
+               type="text">
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+               id="content"
+               name="content"
+               ngModel
+               required
+               type="text">
+      </div>
+      <div class="form-group">
+        <label for="loveIts">
+          LoveIts
+        </label>
+        <!--- required : attribut Angular stipulant que ce champ doit etre rempli --->
+        <input class="form-control"
+               id="loveIts"
+               name="loveIts"
+               ngModel
+               required
+               type="number">
+
+        <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API-->
+        <button (click)="onSingleLove()"
+                class="btn btn-success">Love !!!
+        </button>
+        <button (click)="onSingleHate()"
+                class="btn btn-danger">Don't love !!!
+        </button>
+      </div>
+
+      <!--- [disabled] : le bouton est desactivé si le form n'est pas valable --->
+      <button [disabled]="form_edit_post.invalid"
+              class="btn btn-primary"
+              type="submit">Enregistrer
+      </button>
+    </form>
+  </div>
+</div>

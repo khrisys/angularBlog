@@ -1,0 +1,24 @@
+<!--Directive pour changer de classe bootstrap en fonction d'une condition-->
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': postLoveIts > 0,
+                'list-group-item-info': postLoveIts === 0,
+                'list-group-item-danger': postLoveIts < 0}"
+>
+  <p type="number">{{postId ? postId : 'pas d\'id'}}</p>
+  <!--  interpolation : on fait appel à une fonction pour afficher le statut d'un appareil, et non pas à la valeur d'une var-->
+  <h4>{{postTitle}}  <span class="pull-right" type="Date"> {{postDate}}</span></h4>
+  <p type="text">{{postContent}}</p>
+  <p type="number">Nombre de like : {{postLoveIts}}</p>
+
+  <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API-->
+  <button (click)="onLove()"
+          class="btn btn-success">Love !!!
+  </button>
+  <button (click)="onHate()"
+          class="btn btn-danger">Don't love !!!
+  </button>
+  <button (click)="deletePost(indexOfPst)"
+          class="btn btn-danger">Supprimer le post
+  </button>
+
+  <a [routerLink]="[indexOfPst]" class="pull-right">Detail de ce post</a>
