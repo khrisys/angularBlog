@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from '../services/post.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-detail',
@@ -9,10 +9,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PostDetailComponent implements OnInit {
 
-  postTitle: string;
-  postContent: string;
-  postLoveIts: number;
-  postDate: Date;
+  title: string;
+  content: string;
+  loveIts: number;
+  created_at: Date;
 
   /**
    *
@@ -20,7 +20,7 @@ export class PostDetailComponent implements OnInit {
    * @param route : route contient toutes les infos de la route active, et donc contient aussi les infos du fragment ':id' contenu dans
    * l'url
    */
-  constructor(private postService: PostService, private route: ActivatedRoute) {
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) {
   }
 
   /**
@@ -28,11 +28,11 @@ export class PostDetailComponent implements OnInit {
    * le status de cet user
    */
   ngOnInit(): void {
-    const id = this.route.snapshot.params[+'id']; // Ici, l'id sera le nom du post
-    this.postTitle = this.postService.getPostById(+id).postTitle; // le '+' devant 'id' va caster le string en number
-    this.postContent = this.postService.getPostById(+id).postContent;
-    this.postLoveIts = this.postService.getPostById(+id).postLoveIts;
-    this.postDate = this.postService.getPostById(+id).postDate;
+    const id = this.route.snapshot.params['id']; // Ici, l'id sera le nom du post (pas de "+" devant id , ici!!!
+    this.title = this.postService.getPostById(+id).title; // le '+' devant 'id' va caster le string en number
+    this.content = this.postService.getPostById(+id).content;
+    this.loveIts = this.postService.getPostById(+id).loveIts;
+    this.created_at = this.postService.getPostById(+id).created_at;
 
 
   }
@@ -51,5 +51,12 @@ export class PostDetailComponent implements OnInit {
 
   onSingleHate() {
 
+  }
+
+  /**
+   * Redirige l'utilisateur vers la page de la la liste des posts
+   */
+  gotToPosts() {
+    this.router.navigate(['/posts']);
   }
 }

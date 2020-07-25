@@ -66,14 +66,14 @@ export class PostService {
    * @param loveIts : like sur le post
    */
   onAdd(title: string, content: string, loveIts: number) {
-    const postObject = {id: 0, title: '', content: '', loveIts: 0, date: null};
+    const postObject = {id: 0, title: '', content: '', loveIts: 0, created_at: null};
 
     // On recupere l'id du dernier element de la liste (avec le length -1) ausuel on rajoute 1 pour incrementer l'id
     postObject.id = this.posts[(this.posts.length - 1)].id + 1;
     postObject.title = title;
     postObject.content = content;
     postObject.loveIts = loveIts;
-    postObject.date = new Date();
+    postObject.created_at = new Date();
     this.posts.push(postObject);
     this.emitPostSubject();
   }

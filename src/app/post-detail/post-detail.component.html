@@ -1,9 +1,9 @@
 <div class="col-xs-12"
      style="border: #24292e solid thin">
-  <h2>{{postTitle}}</h2>
-  <p>Contenu : {{postContent}}</p>
-  <p> date de publication : {{postDate}}</p>
-  <p>Nombre de like : {{postLoveIts}}</p>
-  <!--Lien pour revenir à la liste des posts-->
-  <a routerLink="/posts" routerLinkActive="active">Retour à la liste des posts</a>
+  <h2>{{title}}</h2>
+  <p class="font-weight-bold">Contenu : {{content}}</p>
+  <p> date de publication du post : {{created_at | date: 'EEEE dd  MMMM yyyy' | uppercase}}</p>
+  <p>Nombre de like : {{loveIts}}</p>
 </div>
+<!--Lien pour revenir à la liste des posts-->
+<button (click)="gotToPosts()" class="btn btn-success">Retour à la liste des posts</button>
