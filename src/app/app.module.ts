@@ -10,10 +10,13 @@ import {PostFrameInComponent} from './post-frame-in/post-frame-in.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {PostNewComponent} from './post-new/post-new.component';
 import {Error404Component} from './error404/error404.component';
+import {AuthService} from './services/auth-service';
+import {AuthComponent} from './auth/auth.component';
 
 // Attention à bien respecter l'ordre de declaration des paths'
 const appRoutes: Routes = [
   {path: 'posts', component: PostFrameComponent},
+  {path: 'auth', component: AuthComponent},
   {path: 'new', component: PostNewComponent},
   {path: ':id', component: PostDetailComponent},
   {path: 'posts/:id', component: PostDetailComponent},
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    PostService
+    PostService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
