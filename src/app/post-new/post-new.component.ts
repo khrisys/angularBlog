@@ -11,8 +11,8 @@ import {NgForm} from '@angular/forms';
 export class PostNewComponent implements OnInit {
 
   title: string;
-  postContent: string;
-  postLoveIts: number;
+  content: string;
+  loveIts: number;
   postDate: Date;
 
   /**
@@ -29,25 +29,18 @@ export class PostNewComponent implements OnInit {
    * le status de cet user
    */
   ngOnInit(): void {
-    const id = this.route.snapshot.params[+'id']; // Ici, l'id sera le nom du post
-    this.title = this.postService.getPostById(+id).postTitle; // le '+' devant 'id' va caster le string en number
-    this.postContent = this.postService.getPostById(+id).postContent;
-    this.postLoveIts = this.postService.getPostById(+id).postLoveIts;
-    this.postDate = this.postService.getPostById(+id).postDate;
-
-
   }
 
   onSubmit(form: NgForm) {
     const title = form.value['title'];
     const content = form.value['content'];
     const loveIts = form.value['loveIts'];
-    this.postService.onAdd(title, content, loveIts);
+    this.postService.onAdd(title, content, loveIts); // la date de creation du posts sera ajoutée autiomatiqiuement à l'ajout du post dans la la liste des posts existants
     this.router.navigate(['/posts']);
   }
 
   onSingleLove() {
-
+    this.loveIts += 1;
   }
 
   onSingleHate() {

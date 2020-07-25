@@ -25,19 +25,22 @@
       </div>
       <div class="form-group">
         <label for="loveIts">
-          LoveIts
+          LoveIts :
         </label>
-        <!--- required : attribut Angular stipulant que ce champ doit etre rempli --->
-        <input class="form-control"
-               id="loveIts"
-               name="loveIts"
-               ngModel
-               required
-               type="number">
+        <label id="loveIts" ngModel>{{loveIts}}</label>
+        TODO
+        <!-- <input class="form-control"
+                       disabled
+                       id="loveIts"
+                       name="loveIts"
+                       ngModel
+                       required
+                       type="number"
+                       >-->
 
         <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API-->
-        <button (click)="onSingleLove()"
-                class="btn btn-success">Love !!!
+        <button (click)="onSingleLove()" class="btn btn-success"
+                type="number">Love !!!
         </button>
         <button (click)="onSingleHate()"
                 class="btn btn-danger">Don't love !!!
