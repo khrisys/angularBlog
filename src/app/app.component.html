@@ -5,7 +5,7 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-  <button (click)="goToNew()"
+  <button (click)="goToNew()" *ngIf="this.router.url === '/posts' || this.router.url === ''"
           class="btn btn-success">Ajouter un post
   </button>
 </div>

@@ -10,11 +10,12 @@ import {PostFrameInComponent} from './post-frame-in/post-frame-in.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {PostNewComponent} from './post-new/post-new.component';
 
+// Attention à bien respecter l'ordre de declaration des paths'
 const appRoutes: Routes = [
   {path: 'posts', component: PostFrameComponent},
+  {path: 'new', component: PostNewComponent},
   {path: ':id', component: PostDetailComponent},
   {path: 'posts/:id', component: PostDetailComponent},
-  {path: 'new', component: PostNewComponent},
   {path: '', component: PostFrameComponent}
 ];
 

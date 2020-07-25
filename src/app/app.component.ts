@@ -26,9 +26,9 @@ export class AppComponent implements OnInit {
 
   /**
    * Injection de dependances
-   * @param Router
+   * @param router
    */
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit(): void {
