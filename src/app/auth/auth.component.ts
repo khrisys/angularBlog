@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../services/auth-service';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
     this.authService.signIn().then(() => {
       // console.log('connecté !');
       this.authStatus = this.authService.isAuth;
-      this.router.navigate(['users']);
+      this.router.navigate(['posts']);
     });
   }
 
