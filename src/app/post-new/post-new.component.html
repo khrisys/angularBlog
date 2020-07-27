@@ -27,24 +27,23 @@
         <label for="loveIts">
           LoveIts :
         </label>
-        <label id="loveIts" ngModel>{{loveIts}}</label>
-        TODO
-        <!-- <input class="form-control"
-                       disabled
-                       id="loveIts"
-                       name="loveIts"
-                       ngModel
-                       required
-                       type="number"
-                       >-->
+        <!--- [(ngModel)] permet d'afficher la valeur de la var "loveIts" declarée dans le fichier ts, et d'en renvoyer
+        la valeur à ce meme fichier ts si celle ci change grace aux events 'LoveMe() ou HateMe() --->
+        <input [(ngModel)]="loveIts"
+               class="form-control"
+               disabled
+               id="loveIts"
+               name="loveIts"
+               required
+               type="number">
 
-        <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API-->
-        <button (click)="onSingleLove()" class="btn btn-success"
-                type="number">Love !!!
-        </button>
-        <button (click)="onSingleHate()"
-                class="btn btn-danger">Don't love !!!
-        </button>
+        <!--  Event binding : appel de methode par objet du tableau de composant récupéré de l'API. Pour ne pas
+        soumettre le form depuis ici, il faut declarer ces element en tant que input de type "button", et non pas
+        directement la balise button -->
+        <input (click)="onSingleLove()" class="btn btn-success" type="button"
+               value="Love !! ">
+        <input (click)="onSingleHate()" class="btn btn-danger" type="button"
+               value="Don't love !!!">
       </div>
 
       <!--- [disabled] : le bouton est desactivé si le form n'est pas valable --->

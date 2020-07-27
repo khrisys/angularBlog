@@ -12,8 +12,7 @@ export class PostNewComponent implements OnInit {
 
   title: string;
   content: string;
-  loveIts: number;
-  postDate: Date;
+  loveIts: number = 0;
 
   /**
    *
@@ -31,10 +30,15 @@ export class PostNewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Soumet les valeurs des differents input du form au fichier ts
+   *
+   * @param form
+   */
   onSubmit(form: NgForm) {
-    const title = form.value['title'];
-    const content = form.value['content'];
-    const loveIts = form.value['loveIts'];
+    const title = form.controls['title'].value;
+    const content = form.controls['content'].value;
+    const loveIts = form.controls['loveIts'].value;
     this.postService.onAdd(title, content, loveIts); // la date de creation du posts sera ajoutée autiomatiqiuement à l'ajout du post dans la la liste des posts existants
     this.router.navigate(['/posts']);
   }
@@ -44,6 +48,6 @@ export class PostNewComponent implements OnInit {
   }
 
   onSingleHate() {
-
+    this.loveIts -= 1;
   }
 }
