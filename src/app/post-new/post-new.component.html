@@ -27,9 +27,11 @@
         <label for="loveIts">
           LoveIts :
         </label>
-        <!--- [(ngModel)] permet d'afficher la valeur de la var "loveIts" declarée dans le fichier ts, et d'en renvoyer
-        la valeur à ce meme fichier ts si celle ci change grace aux events 'LoveMe() ou HateMe() --->
-        <input [(ngModel)]="loveIts"
+        <!--- [ngModel] du property binding suffit  à afficher la valeur de la var "loveIts" declarée dans le fichier ts,
+        Il n'est pas utile d'utiliser le two-way-binding avec [(ngModel)] puisqu'on ne fait que recuperer la valeur
+        declarée de la var dans le fichier ts. ce qu'on renvoi, on le recupere par un form.control.
+        La valeur de "loveIts" change grace aux events 'LoveMe() ou HateMe() --->
+        <input [ngModel]="loveIts"
                class="form-control"
                disabled
                id="loveIts"
